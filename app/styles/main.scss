@@ -1,17 +1,56 @@
+// ===========COLORS============
+
 $primary-color: #999;
 $strong-color: #333;
 $link-color: #4183c4;
-$header-color: #e5e5e5;
-$border-color: #d8d8d8;
+$header-color: #f5f5f5;
+$border-color: #e5e5e5;
 $open-color: #6cc644;
+
+// ===========SIZES=============
+
+$content-width: 740px;
+
+// ===========GLOBAL============
 
 body {
   margin: 0;
 }
+
+.content {
+  margin: 0 auto;
+  overflow: auto;
+  width: $content-width;
+}
+
+// ===========HEADER============
 
 header {
   background: $header-color;
   border-bottom: 1px solid $border-color;
   height: 36px;
   margin-bottom: 1px solid;
+}
+
+// ===========SIDEBAR===========
+
+.sidebar {
+  float: left;
+  width: 175px;
+}
+
+// ======MAIN CONTENT AREA======
+
+.main-content {
+  width: 550px;
+}
+
+// ===========FOOTER============
+
+footer {
+  height: 75px;
+
+  .content {
+    border-top: 1px solid $border-color;
+  }
 }

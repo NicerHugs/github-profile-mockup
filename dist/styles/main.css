@@ -1,8 +1,25 @@
 body {
   margin: 0; }
 
+.content {
+  margin: 0 auto;
+  overflow: auto;
+  width: 740px; }
+
 header {
-  background: #e5e5e5;
-  border-bottom: 1px solid #d8d8d8;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
   height: 36px;
   margin-bottom: 1px solid; }
+
+.sidebar {
+  float: left;
+  width: 175px; }
+
+.main-content {
+  width: 550px; }
+
+footer {
+  height: 75px; }
+  footer .content {
+    border-top: 1px solid #e5e5e5; }
