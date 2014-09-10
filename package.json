@@ -1,0 +1,11 @@
+{
+  "name": "gulp-intro",
+  "version": "0.0.0",
+  "description": "",
+  "devDependencies": {
+    "express": "^4.8.7",
+    "gulp": "^3.8.7",
+    "gulp-sass": "^0.7.3"
+  },
+  "author": ""
+}
