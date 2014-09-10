@@ -9,7 +9,9 @@ function renderTemplate(templateId, location, array) {
 
 var sidebarModel = _.map(users, function(user) {
   return {
-    image: user.avatar_url
+    image: user.avatar_url,
+    name: user.name,
+    username: user.login
   };
 });
 

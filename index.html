@@ -16,7 +16,11 @@
     <div class="content">
       <section class="sidebar">
         <script type="text/template" id="templates-sidebar">
-          <div><a href="#"><img src="<%= image %>"/></a>user picture and name</div>
+          <div class="user">
+            <a href="#"><img src="<%= image %>"/></a>
+            <span><%= name %></span>
+            <span><%= username %></span>
+          </div>
           <div>user info (location etc)</div>
           <div>follower info</div>
           <div>organizations</div>
