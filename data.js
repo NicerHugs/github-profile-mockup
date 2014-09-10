@@ -1,4 +1,4 @@
-var user = {
+var users = [{
 login: "NicerHugs",
 id: 8377050,
 avatar_url: "https://avatars.githubusercontent.com/u/8377050?v=2",
@@ -29,4 +29,4 @@ followers: 1,
 following: 0,
 created_at: "2014-08-06T17:51:09Z",
 updated_at: "2014-09-10T03:57:47Z"
-};
+}];

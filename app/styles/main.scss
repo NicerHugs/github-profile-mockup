@@ -5,7 +5,8 @@ $strong-color: #333;
 $link-color: #4183c4;
 $header-color: #f5f5f5;
 $border-color: #e5e5e5;
-$open-color: #6cc644;
+$open-issue-color: #6cc644;
+$closed-issue-color: #bd2c00;
 
 // ===========SIZES=============
 
@@ -37,6 +38,14 @@ header {
 .sidebar {
   float: left;
   width: 175px;
+
+  div {
+    border-bottom: 1px solid $border-color;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
 }
 
 // ======MAIN CONTENT AREA======
