@@ -7,5 +7,10 @@ function renderTemplate(templateId, location, array) {
   });
 }
 
+var sidebarModel = _.map(users, function(user) {
+  return {
+    image: user.avatar_url
+  };
+});
 
-renderTemplate('#templates-sidebar', '.sidebar', users);
+renderTemplate('#templates-sidebar', '.sidebar', sidebarModel);

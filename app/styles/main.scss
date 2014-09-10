@@ -33,6 +33,12 @@ header {
   margin-bottom: 1px solid;
 }
 
+// ==========MAIN===============
+
+section {
+  margin: 15px 15px 15px 2px;
+}
+
 // ===========SIDEBAR===========
 
 .sidebar {
@@ -46,7 +52,14 @@ header {
       border-bottom: 0;
     }
   }
+
+  img {
+    border-radius: 5px;
+    height: 173px;
+    width: 173px;
+  }
 }
+
 
 // ======MAIN CONTENT AREA======
 
