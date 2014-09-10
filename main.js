@@ -11,7 +11,10 @@ var sidebarModel = _.map(users, function(user) {
   return {
     image: user.avatar_url,
     name: user.name,
-    username: user.login
+    username: user.login,
+    location: user.location,
+    email: user.email,
+    joinedDate: moment(user.created_at).format("MMM D, YYYY")
   };
 });
 

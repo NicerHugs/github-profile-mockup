@@ -3,6 +3,7 @@
 
 <head>
   <title></title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.css" rel="stylesheet" type="text/css">
   <link href="dist/styles/main.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -21,7 +22,11 @@
             <span class="name"><%= name %></span>
             <span class="username"><%= username %></span>
           </div>
-          <div>user info (location etc)</div>
+          <div class="user-details">
+            <span class="octicon octicon-location"> <%= location %></span>
+            <span class="octicon octicon-mail"> <%= email %></span>
+            <span class="octicon octicon-clock"> Joined on <%= joinedDate %></span>
+          </div>
           <div>follower info</div>
           <div>organizations</div>
         </script>
@@ -37,7 +42,7 @@
     </div>
   </footer>
 
-
+  <script src="http://momentjs.com/downloads/moment.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
   <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
   <script src="data.js"></script>
