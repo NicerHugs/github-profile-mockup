@@ -1,3 +1,17 @@
+$primary-color: #999;
+$strong-color: #333;
+$link-color: #4183c4;
+$header-color: #e5e5e5;
+$border-color: #d8d8d8;
+$open-color: #6cc644;
+
 body {
   margin: 0;
+}
+
+header {
+  background: $header-color;
+  border-bottom: 1px solid $border-color;
+  height: 36px;
+  margin-bottom: 1px solid;
 }

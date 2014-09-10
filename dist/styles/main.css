@@ -1,2 +1,8 @@
 body {
   margin: 0; }
+
+header {
+  background: #e5e5e5;
+  border-bottom: 1px solid #d8d8d8;
+  height: 36px;
+  margin-bottom: 1px solid; }
