@@ -1,6 +1,7 @@
 // =========COLORS==============
 
 $primary-color: #666;
+$medium-color: #999;
 $strong-color: #333;
 $link-color: #4183c4;
 $background-color: #f5f5f5;
@@ -19,6 +20,15 @@ body {
   font-family: Helvetica, arial, freesans, clean, sans-serif;
   font-size: 11px;
   margin: 0;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .content {
@@ -48,7 +58,7 @@ section {
   float: left;
   width: 175px;
 
-  div {
+  > div {
     border-bottom: 1px solid $background-color;
     padding: 8px 0;
 
@@ -82,8 +92,28 @@ section {
 
     span {
       display: block;
-      width: 100%;
       font-size: 11px;
+      width: 100%;
+
+      &:before {
+        color: $medium-color;
+      }
+    }
+  }
+
+  .follower-info {
+    overflow: auto;
+
+    div {
+      float: left;
+      width: 33%;
+    }
+
+    span {
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      width: 100%;
     }
   }
 }

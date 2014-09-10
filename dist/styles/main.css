@@ -3,6 +3,11 @@ body {
   font-family: Helvetica, arial, freesans, clean, sans-serif;
   font-size: 11px;
   margin: 0; }
+  body a {
+    color: #4183c4;
+    text-decoration: none; }
+    body a:hover {
+      text-decoration: underline; }
 
 .content {
   margin: 0 auto;
@@ -21,12 +26,12 @@ section {
 .sidebar {
   float: left;
   width: 175px; }
-  .sidebar div {
+  .sidebar > div {
     border-bottom: 1px solid #f5f5f5;
     padding: 8px 0; }
-    .sidebar div:first-of-type {
+    .sidebar > div:first-of-type {
       padding-top: 0; }
-    .sidebar div:last-of-type {
+    .sidebar > div:last-of-type {
       border-bottom: 0; }
   .sidebar img {
     border-radius: 5px;
@@ -41,8 +46,20 @@ section {
     font-weight: 300; }
   .sidebar .user-details span {
     display: block;
-    width: 100%;
-    font-size: 11px; }
+    font-size: 11px;
+    width: 100%; }
+    .sidebar .user-details span:before {
+      color: #999; }
+  .sidebar .follower-info {
+    overflow: auto; }
+    .sidebar .follower-info div {
+      float: left;
+      width: 33%; }
+    .sidebar .follower-info span {
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      width: 100%; }
 
 .main-content {
   width: 550px; }

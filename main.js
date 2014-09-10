@@ -7,15 +7,17 @@ function renderTemplate(templateId, location, array) {
   });
 }
 
-var sidebarModel = _.map(users, function(user) {
+var userData = _.map(userData, function(user) {
   return {
     image: user.avatar_url,
     name: user.name,
     username: user.login,
     location: user.location,
     email: user.email,
-    joinedDate: moment(user.created_at).format("MMM D, YYYY")
+    joinedDate: moment(user.created_at).format("MMM D, YYYY"),
+    followers: user.followers,
+    following: user.following
   };
 });
 
-renderTemplate('#templates-sidebar', '.sidebar', sidebarModel);
+renderTemplate('#templates-sidebar', '.sidebar', userData);

@@ -24,10 +24,14 @@
           </div>
           <div class="user-details">
             <span class="octicon octicon-location"> <%= location %></span>
-            <span class="octicon octicon-mail"> <%= email %></span>
+            <span class="octicon octicon-mail"> <a href="mailto:<%= email %>"><%= email %></a></span>
             <span class="octicon octicon-clock"> Joined on <%= joinedDate %></span>
           </div>
-          <div>follower info</div>
+          <div class="follower-info">
+            <div><a href="#"><span><%= followers %></span>Follower</a></div>
+            <div><a href="#"><span></span>Starred</a></div>
+            <div><a href="#"><span><%= following %></span>Following</a></div>
+          </div>
           <div>organizations</div>
         </script>
       </section>
