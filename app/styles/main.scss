@@ -21,7 +21,7 @@ $main-font: Helvetica, arial, freesans, clean, sans-serif;
 body {
   color: $strong-color;
   font-family: $main-font;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0;
 
   * {
@@ -60,6 +60,7 @@ body {
 header {
   background: $background-color;
   border-bottom: 1px solid $border-color;
+  font-size: 13px;
   height: 49px;
   margin-bottom: 1px solid;
   padding: 10px 0;
@@ -143,18 +144,18 @@ header {
 // ==========MAIN===============
 
 section {
-  margin: 15px 15px 15px 2px;
+  margin: 20px 20px 20px 10px;
 }
 
 // ===========SIDEBAR===========
 
 .sidebar {
   float: left;
-  width: 175px;
+  width: 230px;
 
   > div {
     border-bottom: 1px solid $background-color;
-    padding: 8px 0;
+    padding: 15px 0 18px;
 
     &:first-of-type {
       padding-top: 0;
@@ -167,30 +168,36 @@ section {
 
   img {
     border-radius: 5px;
-    height: 173px;
-    width: 173px;
+    height: 230px;
+    width: 230px;
   }
 
   .name {
-    font-size: 19.5px;
+    font-size: 26px;
     font-weight: 600;
+    line-height: 40px;
   }
 
   .username {
     color: $primary-color;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 300;
+    line-height: 13px;
   }
 
   .user-details {
 
-    span {
-      display: block;
-      font-size: 11px;
-      width: 100%;
+    div {
+      padding: 4px 0;
+    }
+
+    .octicon {
+      font-size: 16px;
+      text-align: center;
+      width: 25px;
 
       &:before {
-        color: $medium-color;
+        color: $light-color;
       }
     }
   }
@@ -205,7 +212,7 @@ section {
 
     span {
       display: block;
-      font-size: 20px;
+      font-size: 26px;
       text-align: center;
       width: 100%;
     }
