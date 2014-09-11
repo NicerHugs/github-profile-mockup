@@ -188,7 +188,7 @@ section {
   .user-details {
 
     div {
-      padding: 4px 0;
+      padding: 3px 0;
     }
 
     .octicon {
@@ -207,14 +207,28 @@ section {
 
     div {
       float: left;
+      text-align: center;
       width: 33%;
     }
 
+    a {
+      color: $medium-color;
+      font-size: 11px;
+
+      &:hover {
+        color: $link-color;
+        text-decoration: none;
+      }
+    }
+
     span {
+      color: $link-color;
       display: block;
       font-size: 26px;
+      font-weight: 700;
       text-align: center;
       width: 100%;
+
     }
   }
 }

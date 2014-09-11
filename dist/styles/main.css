@@ -106,7 +106,7 @@ section {
     font-weight: 300;
     line-height: 13px; }
   .sidebar .user-details div {
-    padding: 4px 0; }
+    padding: 3px 0; }
   .sidebar .user-details .octicon {
     font-size: 16px;
     text-align: center;
@@ -117,10 +117,19 @@ section {
     overflow: auto; }
     .sidebar .follower-info div {
       float: left;
+      text-align: center;
       width: 33%; }
+    .sidebar .follower-info a {
+      color: #999;
+      font-size: 11px; }
+      .sidebar .follower-info a:hover {
+        color: #4183c4;
+        text-decoration: none; }
     .sidebar .follower-info span {
+      color: #4183c4;
       display: block;
       font-size: 26px;
+      font-weight: 700;
       text-align: center;
       width: 100%; }
 
