@@ -19,6 +19,28 @@ header {
   border-bottom: 1px solid #e5e5e5;
   height: 36px;
   margin-bottom: 1px solid; }
+  header a {
+    color: #333;
+    font-weight: 600; }
+    header a:hover {
+      color: #4183c4;
+      text-decoration: none; }
+  header .search {
+    border-radius: 3px;
+    display: inline-block;
+    width: 270px; }
+    header .search input[type=search] {
+      -webkit-appearance: textfield;
+      box-shadow: 0;
+      font-size: 9px;
+      font-weight: 400;
+      height: 20px;
+      width: 100%; }
+  header ul {
+    display: inline-block;
+    list-style-type: none; }
+    header ul li {
+      display: inline-block; }
 
 section {
   margin: 15px 15px 15px 2px; }

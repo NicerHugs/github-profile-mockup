@@ -44,6 +44,40 @@ header {
   border-bottom: 1px solid $border-color;
   height: 36px;
   margin-bottom: 1px solid;
+
+  a {
+    color: $strong-color;
+    font-weight: 600;
+
+    &:hover {
+      color: $link-color;
+      text-decoration: none;
+    }
+  }
+
+  .search {
+    border-radius: 3px;
+    display: inline-block;
+    width: 270px;
+
+    input[type=search] {
+      -webkit-appearance: textfield;
+      box-shadow: 0;
+      font-size: 9px;
+      font-weight: 400;
+      height: 20px;
+      width: 100%;
+    }
+  }
+
+  ul {
+    display: inline-block;
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+    }
+  }
 }
 
 // ==========MAIN===============
