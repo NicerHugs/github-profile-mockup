@@ -799,3 +799,16 @@ var userReposData = [{
   watchers: 0,
   default_branch: "master"
 }];
+
+var userOrgsData = [
+{
+login: "TIY-GVL-FEE-2014-Aug",
+id: 8293064,
+url: "https://api.github.com/orgs/TIY-GVL-FEE-2014-Aug",
+repos_url: "https://api.github.com/orgs/TIY-GVL-FEE-2014-Aug/repos",
+events_url: "https://api.github.com/orgs/TIY-GVL-FEE-2014-Aug/events",
+members_url: "https://api.github.com/orgs/TIY-GVL-FEE-2014-Aug/members{/member}",
+public_members_url: "https://api.github.com/orgs/TIY-GVL-FEE-2014-Aug/public_members{/member}",
+avatar_url: "https://avatars.githubusercontent.com/u/8293064?v=2"
+}
+];
