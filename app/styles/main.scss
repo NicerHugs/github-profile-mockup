@@ -2,11 +2,11 @@
 
 $primary-color: #666;
 $medium-color: #999;
+$light-color: #ccc;
 $strong-color: #333;
 $link-color: #4183c4;
 $background-color: #f5f5f5;
 $border-color: #e5e5e5;
-$search-border-color: #ccc;
 $open-issue-color: #6cc644;
 $closed-issue-color: #bd2c00;
 
@@ -46,13 +46,13 @@ body {
       text-decoration: underline;
     }
   }
-}
 
-.content {
-  margin: 0 auto;
-  overflow: auto;
-  position: relative;
-  width: $content-width;
+  .content {
+    margin: 0 auto;
+    overflow: auto;
+    position: relative;
+    width: $content-width;
+  }
 }
 
 // ===========HEADER============
@@ -87,7 +87,7 @@ header {
 
     input[type=search] {
       -webkit-appearance: textfield;
-      border: solid 1px $search-border-color;
+      border: solid 1px $light-color;
       border-radius: 3px;
       box-shadow: inset 0 1px 1px 0 $background-color;
       font-family: $main-font;
@@ -134,9 +134,9 @@ header {
       line-height: 28px;
     }
 
-
     .octicon-triangle-down {
       font-size: 10px;
+    }
   }
 }
 
@@ -222,9 +222,26 @@ section {
 // ===========FOOTER============
 
 footer {
+  color: $light-color;
   height: 75px;
 
   .content {
     border-top: 1px solid $background-color;
+
+    * {
+      display: inline-block;
+    }
+  }
+
+  a {
+    color: #4183c4;
+
+    .octicon {
+      color: $light-color;
+
+      &:hover {
+        color: $medium-color;
+      }
+    }
   }
 }
