@@ -6,20 +6,37 @@ $strong-color: #333;
 $link-color: #4183c4;
 $background-color: #f5f5f5;
 $border-color: #e5e5e5;
+$search-border-color: #ccc;
 $open-issue-color: #6cc644;
 $closed-issue-color: #bd2c00;
 
 // ===========SIZES=============
 
-$content-width: 740px;
+$content-width: 1000px;
 
 // ===========GLOBAL============
 
+$main-font: Helvetica, arial, freesans, clean, sans-serif;
+
 body {
   color: $strong-color;
-  font-family: Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 11px;
+  font-family: $main-font;
+  font-size: 13px;
   margin: 0;
+
+  * {
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+  .octicon {
+    font-size: 16px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
   a {
     color: $link-color;
@@ -34,6 +51,7 @@ body {
 .content {
   margin: 0 auto;
   overflow: auto;
+  position: relative;
   width: $content-width;
 }
 
@@ -42,8 +60,14 @@ body {
 header {
   background: $background-color;
   border-bottom: 1px solid $border-color;
-  height: 36px;
+  height: 49px;
   margin-bottom: 1px solid;
+  padding: 10px 0;
+
+  .octicon-mark-github {
+    font-size: 28px;
+    padding: 0 8px;
+  }
 
   a {
     color: $strong-color;
@@ -58,15 +82,25 @@ header {
   .search {
     border-radius: 3px;
     display: inline-block;
-    width: 270px;
+    margin-right: 7px;
+    width: 360px;
 
     input[type=search] {
       -webkit-appearance: textfield;
-      box-shadow: 0;
-      font-size: 9px;
+      border: solid 1px $search-border-color;
+      border-radius: 3px;
+      box-shadow: inset 0 1px 1px 0 $background-color;
+      font-family: $main-font;
+      font-size: 12px;
       font-weight: 400;
-      height: 20px;
+      height: 28px;
       width: 100%;
+
+      &:focus {
+        border: solid 1px #51a7e8;
+        box-shadow: 0 0 2px 0 #51a7e8;
+        outline: none;
+      }
     }
   }
 
@@ -76,7 +110,14 @@ header {
 
     li {
       display: inline-block;
+      line-height: 27px;
+      padding: 0 6px;
     }
+  }
+
+  .user-links {
+    position: absolute;
+    right: 0;
   }
 }
 

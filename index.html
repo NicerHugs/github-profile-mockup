@@ -17,19 +17,25 @@
         </form>
       </div>
       <ul>
-        <li><a href="https://github.com/explore">Explore</a></li>
-        <li><a href="https://gist.github.com">Gist</a></li>
-        <li><a href="https://github.com/blog">Blog</a></li>
-        <li><a href="https://help.github.com">Help</a></li>
+        <li><a href="https://github.com/explore">Explore</a>
+        </li>
+        <li><a href="https://gist.github.com">Gist</a>
+        </li>
+        <li><a href="https://github.com/blog">Blog</a>
+        </li>
+        <li><a href="https://help.github.com">Help</a>
+        </li>
       </ul>
-      <ul>
-        <li class="profile"><a href="https://gist.github.com"></a></li>
-        <li class="create-new"><a href="https://github.com/<%= username %>?tab=repositories#">
-          <span></span></a></li>
-        <li class="notifications"><a href="https://github.com/notifications"><span class="octicon octicon-inbox"></span></a></li>
-        <li class="settings"><a href="https://github.com/settings/profile"><span class="octicon octicon-gear"></span></a></li>
-        <li class="signout"><a href="https://github.com/notifications"><span class="octicon octicon-sign-out"></span></a></li>
-      </ul>
+      <script type="text/template" id="templates-user-links">
+        <ul class ="user-links">
+          <li class="profile"><a href="https://gist.github.com"></a></li>
+          <li class="create-new"><a href="https://github.com/<%= username %>?tab=repositories#">
+            <span class="octicon octicon-plus"><span class="octicon octicon-triangle-down"></span></span></a></li>
+          <li class="notifications" ><a href="https://github.com/notifications"><span class="octicon octicon-inbox"></span></a></li>
+          <li class="settings"><a href="https://github.com/settings/profile"><span class="octicon octicon-gear"></span></a></li>
+          <li class="signout"><a href="https://github.com/notifications"><span class="octicon octicon-sign-out"></span></a></li>
+         </ul>
+      </script>
     </div>
   </header>
   <main>
@@ -37,20 +43,20 @@
       <section class="sidebar">
         <script type="text/template" id="templates-sidebar">
           <div class="user">
-            <a href="#"><img src="<%= image %>"/></a>
-            <span class="name"><%= name %></span>
-            <span class="username"><%= username %></span>
+            <a href="#"><img src="<%= image %>" /></a>
+            <span class="name"><%= name %></span >
+            <span class="username"> <%= username %> </span>
           </div>
-          <div class="user-details">
-            <span class="octicon octicon-location"> <%= location %></span>
-            <span class="octicon octicon-mail"> <a href="mailto:<%= email %>"><%= email %></a></span>
-            <span class="octicon octicon-clock"> Joined on <%= joinedDate %></span>
-          </div>
+            <div class="user-details">
+              <span class="octicon octicon-location"> <%= location %> </span>
+              <span class="octicon octicon-mail"> <a href="mailto:<%= email %>"><%= email %></a ></span>
+              <span class="octicon octicon-clock"> Joined on <%= joinedDate %></span >
+            </div>
           <div class="follower-info">
-            <div><a href="#"><span><%= followers %></span>Follower</a></div>
-            <div><a href="#"><span></span>Starred</a></div>
-            <div><a href="#"><span><%= following %></span>Following</a></div>
-          </div>
+            <div><a href="#"><span><%= followers %></span> Follower </a></div>
+            <div> <a href = "#" > <span></span>Starred</a></div>
+            <div><a href="#"><span><%= following %></span> Following </a></div>
+            </div>
           <div>organizations</div>
         </script>
       </section>
