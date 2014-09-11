@@ -16,7 +16,8 @@ var userData = _.map(userData, function(user) {
     email: user.email,
     joinedDate: moment(user.created_at).format("MMM D, YYYY"),
     followers: user.followers,
-    following: user.following
+    following: user.following,
+    starred: userStarredData.length
   };
 });
 
