@@ -17,7 +17,10 @@ var userData = _.map(userData, function(user) {
     joinedDate: moment(user.created_at).format("MMM D, YYYY"),
     followers: user.followers,
     following: user.following,
-    starred: userStarredData.length
+    starred: userStarredData.length,
+    orgs: _.map(userOrgsData, function(org){
+      return {orgName: org.login, orgAvatar: org.avatar_url
+      };})
   };
 });
 
