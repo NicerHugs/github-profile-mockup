@@ -32,7 +32,24 @@ var orgData = _.map(userOrgsData, function(org) {
   };
 });
 
-renderTemplate('#templates-user-links', 'header .content', userData);
+$.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
+  var userData = _.map([data], function(i) {
+    return {
+      image: i.avatar_url,
+      name: i.name,
+      username: i.login,
+      location: i.location,
+      email: i.email,
+      joinedDate: moment(i.created_at).format("MMM D, YYYY"),
+      followers: i.followers,
+      following: i.following};
+    });
+  renderTemplate('#templates-user-links', 'header .content', userData);
+  $.getJSON('https://api.github.com/users/NicerHugs/starred').done(function(starredData) {
+    userData[0].starred = starredData.length;
+    renderTemplate('#templates-sidebar', '.sidebar', userData);
+  });
+});
 
-renderTemplate('#templates-sidebar', '.sidebar', userData);
+
 renderTemplate('#templates-sidebar-orgs', '.sidebar', orgData);
