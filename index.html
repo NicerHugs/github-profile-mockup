@@ -37,6 +37,7 @@
   <main>
     <div class="content">
       <section class="sidebar">
+        <div class="sidebar-top">
         <script type="text/template" id="templates-sidebar">
           <div class="user">
             <a href="#"><img src="<%= image %>" /></a>
@@ -54,10 +55,13 @@
             <div><a href="#"><span><%= following %></span> Following </a></div>
           </div>
         </script>
+      </div>
+        <div class="orgs">
         <script type="text/template" id="templates-sidebar-orgs">
-          <div>organizations
+          <div>organizations</div>
           <div><a href="<%= orgUrl %>"><img src="<%= orgAvatar %>"/></a></div>
         </script>
+        </div>
       </section>
       <section class="main-content">
         main content goes here

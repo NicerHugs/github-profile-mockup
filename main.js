@@ -18,7 +18,7 @@ $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
   renderTemplate('#templates-user-links', 'header .content', userData);
   $.getJSON('https://api.github.com/users/NicerHugs/starred').done(function(starredData) {
     userData.starred = starredData.length;
-    renderTemplate('#templates-sidebar', '.sidebar', userData);
+    renderTemplate('#templates-sidebar', '.sidebar-top', userData);
   });
 });
 
@@ -32,6 +32,6 @@ $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
     };
   });
   orgData.forEach(function(orgDatum){
-    renderTemplate('#templates-sidebar-orgs', '.sidebar', orgDatum);
+    renderTemplate('#templates-sidebar-orgs', '.orgs', orgDatum);
   });
 });

@@ -153,19 +153,6 @@ section {
   float: left;
   width: 230px;
 
-  > div {
-    border-bottom: 1px solid $background-color;
-    padding: 15px 0 18px;
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
-    &:last-of-type {
-      border-bottom: 0;
-    }
-  }
-
   img {
     border-radius: 5px;
     height: 230px;
@@ -229,6 +216,15 @@ section {
       text-align: center;
       width: 100%;
 
+    }
+  }
+
+  .orgs {
+
+    img {
+      border-radius: 2px;
+      height: 40px;
+      width: 40px;
     }
   }
 }
