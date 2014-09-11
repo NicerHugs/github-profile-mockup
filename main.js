@@ -21,3 +21,4 @@ var userData = _.map(userData, function(user) {
 });
 
 renderTemplate('#templates-sidebar', '.sidebar', userData);
+renderTemplate('#templates-user-links', 'header .content', userData);
