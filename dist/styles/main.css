@@ -66,10 +66,18 @@ header {
       padding: 0 6px; }
   header .user-links {
     position: absolute;
-    right: 0; }
+    right: 4px; }
     header .user-links img {
+      border-radius: 3px;
       height: 20px;
+      vertical-align: middle;
       width: 20px; }
+    header .user-links li {
+      padding: 0 8px; }
+    header .user-links .octicon {
+      line-height: 28px; }
+      header .user-links .octicon .octicon-triangle-down {
+        font-size: 12px; }
 
 section {
   margin: 15px 15px 15px 2px; }

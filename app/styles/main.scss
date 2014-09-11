@@ -117,12 +117,26 @@ header {
 
   .user-links {
     position: absolute;
-    right: 0;
+    right: 4px;
 
     img {
+      border-radius: 3px;
       height: 20px;
+      vertical-align: middle;
       width: 20px;
     }
+
+    li {
+      padding: 0 8px;
+    }
+
+    .octicon {
+      line-height: 28px;
+    }
+
+
+    .octicon-triangle-down {
+      font-size: 10px;
   }
 }
 
