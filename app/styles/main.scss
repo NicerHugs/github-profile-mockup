@@ -222,26 +222,51 @@ section {
 // ===========FOOTER============
 
 footer {
-  color: $light-color;
-  height: 75px;
+  color: $medium-color;
+  font-size: 12px;
+  font-weight: 400;
+  height: 100px;
 
   .content {
     border-top: 1px solid $background-color;
+    height: 100px;
 
     * {
       display: inline-block;
+    }
+
+    > * {
+      position: absolute;
+      top: 44px;
+
+
     }
   }
 
   a {
     color: #4183c4;
+    top: 39px !important;
+    left: 488px;
 
     .octicon {
       color: $light-color;
+      font-size: 24px;
 
       &:hover {
         color: $medium-color;
       }
     }
+  }
+
+  li {
+    padding: 0 6px;
+  }
+
+  .left {
+    left: 122px;
+  }
+
+  .right {
+    right: 0;
   }
 }
