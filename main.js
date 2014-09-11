@@ -24,5 +24,15 @@ var userData = _.map(userData, function(user) {
   };
 });
 
-renderTemplate('#templates-sidebar', '.sidebar', userData);
+var orgData = _.map(userOrgsData, function(org) {
+  return {
+    orgAvatar: org.avatar_url,
+    orgName: org.login,
+    orgUrl: org.url
+  };
+});
+
 renderTemplate('#templates-user-links', 'header .content', userData);
+
+renderTemplate('#templates-sidebar', '.sidebar', userData);
+renderTemplate('#templates-sidebar-orgs', '.sidebar', orgData);
