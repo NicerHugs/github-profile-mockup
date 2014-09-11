@@ -67,6 +67,9 @@ header {
   header .user-links {
     position: absolute;
     right: 0; }
+    header .user-links img {
+      height: 20px;
+      width: 20px; }
 
 section {
   margin: 15px 15px 15px 2px; }
