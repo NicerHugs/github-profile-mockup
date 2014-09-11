@@ -64,7 +64,21 @@
         </div>
       </section>
       <section class="main-content">
-        main content goes here
+        <ul>
+        </ul>
+        <div class="repos">
+        <script type="text/template" id="templates-repos">
+          <div class="repo">
+            <a href="<%= repoUrl %>"><h3><%= repoName %></h3></a>
+            <span class="last-updated"><%= lastUpdated %></span>
+            <div class="repo-stats">
+              <span class="language"><%= repoLanguage %></span>
+              <a class="star-gazers"><a href="<%= repoUrl %>/stargazers"<span class="octicon octicon-star"><%= stargazers %></span></a>
+              <a class="forks"><a href="<%= repoUrl %>/network"<span class="octicon octicon-git-branch"><%= forks %></span></a>
+            </div>
+          </div>
+        </script>
+        </div>
       </section>
     </div>
   </main>

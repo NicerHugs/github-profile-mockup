@@ -1,8 +1,10 @@
-function renderTemplate(templateId, location, array) {
+function renderTemplate(templateId, location, model) {
     var templateString = $(templateId).text();
     var templateFunction = _.template(templateString);
-    var renderedTemplate = templateFunction(array);
+    var renderedTemplate = templateFunction(model);
     $(location).append(renderedTemplate);}
+
+
 
 
 $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
@@ -33,5 +35,33 @@ $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
   });
   orgData.forEach(function(orgDatum){
     renderTemplate('#templates-sidebar-orgs', '.orgs', orgDatum);
+  });
+});
+
+$.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
+  var reposData = _.map(data, function(repo) {
+    return {
+      repoUrl: repo.html_url,
+      repoName: repo.name,
+      sortByDate: Date.parse(repo.updated_at),
+      lastUpdated: moment(repo.updated_at).fromNow(),
+      forks: repo.forks_count,
+      stargazers: repo.stargazers_count,
+      repoLanguage: repo.language
+    };
+  });
+  //SORT BY DATE
+  reposData = reposData.sort(function(a, b) {
+    if ((a.sortByDate) > (b.sortByDate)) {
+      return -1;
+    }
+    if ((a.sortByDate) < (b.sortByDate)) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+  reposData.forEach(function(repoDatum){
+    renderTemplate('#templates-repos', '.repos', repoDatum);
   });
 });
