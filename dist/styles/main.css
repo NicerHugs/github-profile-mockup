@@ -207,10 +207,11 @@ section {
 .search-filter {
   -webkit-appearance: none;
   border-bottom: 1px solid #e5e5e5;
-  padding: 10px 0; }
+  padding: 10px 0;
+  position: relative; }
   .search-filter form {
     display: inline-block;
-    margin-right: 28px; }
+    margin-right: 20px; }
   .search-filter input[type=search] {
     -webkit-appearance: textfield;
     border: solid 1px #ccc;
@@ -264,8 +265,10 @@ section {
     height: 35px;
     line-height: 32px;
     margin-left: 5px;
+    position: absolute;
+    right: 0;
     text-align: center;
-    text-shadow: 0 -1px 0 #56a532;
+    text-shadow: 0 -1px 0 #427e26;
     width: 70px; }
     .search-filter .new:hover {
       text-decoration: none; }

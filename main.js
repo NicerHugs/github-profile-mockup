@@ -65,3 +65,13 @@ $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
     renderTemplate('#templates-repos', '.repos', repoDatum);
   });
 });
+
+$('.filter li').on('click', function(){
+  $(this).siblings().removeClass("active");
+  $(this).addClass("active");
+});
+
+$('.tabs span').on('click', function(){
+  $('.tabs span').removeClass("active");
+  $(this).addClass("active");
+});

@@ -344,10 +344,11 @@ section {
   -webkit-appearance: none;
   border-bottom: 1px solid $border-color;
   padding: 10px 0;
+  position: relative;
 
   form {
     display: inline-block;
-    margin-right: 28px;
+    margin-right: 20px;
   }
 
   input[type=search] {
@@ -404,8 +405,10 @@ section {
     height: 35px;
     line-height: 32px;
     margin-left: 5px;
+    position: absolute;
+    right: 0;
     text-align: center;
-    text-shadow: 0 -1px 0 darken($green-color, 10%);
+    text-shadow: 0 -1px 0 darken($green-color, 20%);
     width: 70px;
   }
 }
