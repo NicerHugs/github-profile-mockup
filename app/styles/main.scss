@@ -418,8 +418,8 @@ section {
 
 .repo {
   border-bottom: solid 1px $background-color;
-  height: 110px;
-  padding: 28px 0;
+  overflow: auto;
+  padding: 30px 0;
   position: relative;
 
   h3 {
@@ -429,8 +429,15 @@ section {
     padding-bottom: 10px;
   }
 
+  .repo-description {
+    color: $primary-color;
+    display: block;
+    padding-bottom: 10px;
+  }
+
   .last-updated {
     color: $medium-color;
+    display: block;
     font-size: 13px;
   }
 
@@ -476,7 +483,7 @@ footer {
 
     > * {
       position: absolute;
-      top: 44px;
+      top: 42px;
 
 
     }

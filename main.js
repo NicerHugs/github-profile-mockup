@@ -36,7 +36,7 @@ $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
     };
   });
   orgData.forEach(function(orgDatum){
-    renderTemplate('#templates-sidebar-orgs', '.orgs', orgDatum);
+    renderTemplate('#templates-sidebar-orgs', '.org-imgs', orgDatum);
   });
 });
 
@@ -53,9 +53,11 @@ function makeRepos(filterBy) {
         forks: repo.forks_count,
         stargazers: repo.stargazers_count,
         repoLanguage: repo.language,
-        private: repo.private
+        private: repo.private,
+        description: repo.description
       };
     });
+    _.defaults(reposData, {description: ""});
     //SORT BY DATE
     reposData = reposData.sort(function(a, b) {
       if ((a.sortByDate) > (b.sortByDate)) {

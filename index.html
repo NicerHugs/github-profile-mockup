@@ -59,10 +59,12 @@
         </script>
       </div>
         <div class="orgs">
-        <script type="text/template" id="templates-sidebar-orgs">
           <h4>Organizations</h4>
-          <div class="org-imgs"><a href="<%= orgUrl %>"><img src="<%= orgAvatar %>"/></a></div>
-        </script>
+          <div class="org-imgs">
+            <script type="text/template" id="templates-sidebar-orgs">
+              <a href="<%= orgUrl %>"><img src="<%= orgAvatar %>"/></a>
+            </script>
+          </div>
         </div>
       </section>
 
@@ -94,6 +96,7 @@
         <script type="text/template" id="templates-repos">
           <div class="repo">
             <a href="<%= repoUrl %>"><h3><%= repoName %></h3></a>
+            <span class="repo-description"><%= description %></span>
             <span class="last-updated">Updated <%= lastUpdated %></span>
             <div class="repo-stats">
               <span class="language"><%= repoLanguage %></span>
