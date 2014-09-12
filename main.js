@@ -24,6 +24,8 @@ $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
   });
 });
 
+//function renderRepos(sortBy){}
+
 
 $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
   var orgData = _.map(data, function(org) {
@@ -38,33 +40,46 @@ $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
   });
 });
 
-$.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
-  var reposData = _.map(data, function(repo) {
-    return {
-      repoUrl: repo.html_url,
-      repoName: repo.name,
-      sortByDate: Date.parse(repo.updated_at),
-      lastUpdated: moment(repo.updated_at).fromNow(),
-      forks: repo.forks_count,
-      stargazers: repo.stargazers_count,
-      repoLanguage: repo.language
-    };
-  });
-  //SORT BY DATE
-  reposData = reposData.sort(function(a, b) {
-    if ((a.sortByDate) > (b.sortByDate)) {
-      return -1;
+
+function makeRepos(sortBy) {
+
+  $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
+    var reposData = _.map(data, function(repo) {
+      return {
+        repoUrl: repo.html_url,
+        repoName: repo.name,
+        sortByDate: Date.parse(repo.updated_at),
+        lastUpdated: moment(repo.updated_at).fromNow(),
+        forks: repo.forks_count,
+        stargazers: repo.stargazers_count,
+        repoLanguage: repo.language,
+        private: repo.private
+      };
+    });
+    //SORT BY DATE
+    reposData = reposData.sort(function(a, b) {
+      if ((a.sortByDate) > (b.sortByDate)) {
+        return -1;
+      }
+      if ((a.sortByDate) < (b.sortByDate)) {
+        return 1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+    if (sortBy == "private") {
+    //FILTER BY PRIVATE
+      reposData = reposData.filter(function(repoDatum){
+        return repoDatum.private === true;
+      });
     }
-    if ((a.sortByDate) < (b.sortByDate)) {
-      return 1;
-    }
-    // a must be equal to b
-    return 0;
+    reposData.forEach(function(repoDatum){
+      renderTemplate('#templates-repos', '.repos', repoDatum);
+    });
   });
-  reposData.forEach(function(repoDatum){
-    renderTemplate('#templates-repos', '.repos', repoDatum);
-  });
-});
+}
+
+makeRepos();
 
 function makeActive(element) {
   $(element).on('click', function(){
