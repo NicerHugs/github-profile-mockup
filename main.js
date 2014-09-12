@@ -41,7 +41,7 @@ $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
 });
 
 
-function makeRepos(sortBy) {
+function makeRepos(filterBy) {
 
   $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
     var reposData = _.map(data, function(repo) {
@@ -67,7 +67,7 @@ function makeRepos(sortBy) {
       // a must be equal to b
       return 0;
     });
-    if (sortBy == "private") {
+    if (filterBy == "filter-private") {
     //FILTER BY PRIVATE
       reposData = reposData.filter(function(repoDatum){
         return repoDatum.private === true;
@@ -79,7 +79,6 @@ function makeRepos(sortBy) {
   });
 }
 
-makeRepos();
 
 function makeActive(element) {
   $(element).on('click', function(){
@@ -90,3 +89,22 @@ function makeActive(element) {
 
 makeActive('.filter li');
 makeActive('.tabs span');
+
+$('.filter li').on('click', function() {
+  var id = $(this).attr('id');
+  $('.repo').remove();
+  makeRepos(id);
+});
+
+
+//$('#filter-private').on('click', function(){
+//  $('.repo').remove();
+//  makeRepos("filter-private");
+//});
+//
+//$('#filter-all').on('click', function(){
+//  $('.repo').remove();
+//  makeRepos();
+//});
+
+makeRepos();
