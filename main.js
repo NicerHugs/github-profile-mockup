@@ -125,4 +125,33 @@ function makeActive(element) {
 makeActive('.filter li');
 makeActive('.tabs span');
 
+function makeActiveTab(tabID, tabClass){
+  $(tabClass).siblings().removeClass('active');
+  $(tabClass).addClass('active');
+}
+
+function displaySelectedTab(){
+  $('.tabs span').on('click', function(){
+    var tabString = $(this).text();
+    tabString = tabString.toLowerCase();
+    var tabArray = tabString.split(" ");
+    var tabID = "#" + tabArray.join("-") + "-tab";
+    var tabClass = "." + tabArray.join("-") + "-tab";
+    console.log(tabID);
+    console.log(tabClass);
+    $(tabID).on('click', function(){
+      $(tabClass).siblings().removeClass('active');
+      $(tabClass).addClass('active');
+    });
+  });
+}
+
+displaySelectedTab();
+
+// $('#contributions-tab').on('click', function(){
+//   $('.contributions-tab').siblings().removeClass('active');
+//   $('.contributions-tab').addClass('active');
+// });
+
+
 renderAllTemplates();

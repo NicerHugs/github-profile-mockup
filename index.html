@@ -72,42 +72,63 @@
         <div class="main-tabs">
           <a class="edit-profile-button" href="https://github.com/account"><span class="octicon octicon-pencil"> Edit profile</span></a>
           <ul class="tabs">
-            <li><a href="#"><span class="octicon octicon-diff-added"> Contributions</span></a></li>
-            <li><a href="#"><span class="octicon octicon-repo active"> Repositories</span></a></li>
-            <li><a href="#"><span class="octicon octicon-rss"> Public Activity</span></a></li>
+            <li><a href="#" id="contributions-tab"><span class="octicon octicon-diff-added">Contributions</span></a></li>
+            <li><a href="#" id="repositories-tab"><span class="octicon octicon-repo active">Repositories</span></a></li>
+            <li><a href="#" id="public-activity-tab"><span class="octicon octicon-rss">Public Activity</span></a></li>
           </ul>
         </div>
-        <div class="search-filter">
-          <form name="repository-search">
-            <input type="search" placeholder="Find a repository..." />
-            <a href="#" class="search">Search</a>
-          </form>
-          <ul class="filter">
-            <li id="filter-all" class="active"><a href="#">All</a></li>
-            <li id="filter-public"><a href="#">Public</a></li>
-            <li id="filter-private"><a href="#">Private</a></li>
-            <li id="filter-source"><a href="#">Sources</a></li>
-            <li id="filter-fork"><a href="#">Forks</a></li>
-            <li id="filter-mirror"><a href="#">Mirrors</a></li>
-          </ul>
-          <a href="#" class="new octicon octicon-repo"><span> New</span></a>
-        </div>
-        <div class="repos">
-        <script type="text/template" id="templates-repos">
-          <div class="repo">
-            <a href="<%= repoUrl %>"><h3><%= repoName %></h3></a>
-            <div class="repo-description">
-              <span><%= description %></span>
-              <span class="last-updated">Updated <%= lastUpdated %></span>
-            </div>
-            <div class="repo-stats">
-              <span class="language"><%= repoLanguage %></span>
-              <a class="star-gazers"><a href="<%= repoUrl %>/stargazers"<span class="octicon octicon-star"><%= stargazers %></span></a>
-              <a class="forks"><a href="<%= repoUrl %>/network"<span class="octicon octicon-git-branch"><%= forks %></span></a>
-            </div>
+
+        <div class="contributions-tab">
+          <div class="popular-repos header-box">
+            <h3>Popular repositories</h3>
           </div>
-        </script>
-        </div>
+          <div class="repos-contributed header-box">
+            repos-contributed
+          </div>
+          <div class="contributions header-box">
+            contributions
+          </div>
+          <div class="contribution-activity">
+            contributions-activity
+          </div>
+        </div><!--contributions tab-->
+
+        <div class="repositories-tab active">
+          <div class="search-filter">
+            <form name="repository-search">
+              <input type="search" placeholder="Find a repository..." />
+              <a href="#" class="search">Search</a>
+            </form>
+            <ul class="filter">
+              <li id="filter-all" class="active"><a href="#">All</a></li>
+              <li id="filter-public"><a href="#">Public</a></li>
+              <li id="filter-private"><a href="#">Private</a></li>
+              <li id="filter-source"><a href="#">Sources</a></li>
+              <li id="filter-fork"><a href="#">Forks</a></li>
+              <li id="filter-mirror"><a href="#">Mirrors</a></li>
+            </ul>
+            <a href="#" class="new octicon octicon-repo"><span> New</span></a>
+          </div>
+          <div class="repos">
+          <script type="text/template" id="templates-repos">
+            <div class="repo">
+              <a href="<%= repoUrl %>"><h3><%= repoName %></h3></a>
+              <div class="repo-description">
+                <span><%= description %></span>
+                <span class="last-updated">Updated <%= lastUpdated %></span>
+              </div>
+              <div class="repo-stats">
+                <span class="language"><%= repoLanguage %></span>
+                <a class="star-gazers"><a href="<%= repoUrl %>/stargazers"<span class="octicon octicon-star"><%= stargazers %></span></a>
+                <a class="forks"><a href="<%= repoUrl %>/network"<span class="octicon octicon-git-branch"><%= forks %></span></a>
+              </div>
+            </div>
+          </script>
+          </div>
+        </div> <!--repos tab -->
+
+        <div class="public-activity-tab">
+        </div><!--public activity tab-->
       </section>
 
     </div>
