@@ -426,19 +426,18 @@ section {
     font-size: 20px;
     font-weight: 600;
     margin: 0;
-    padding-bottom: 10px;
   }
 
   .repo-description {
     color: $primary-color;
-    display: block;
-    padding-bottom: 10px;
+    padding-top: 10px;
   }
 
   .last-updated {
     color: $medium-color;
     display: block;
     font-size: 13px;
+    padding-top: 10px;
   }
 
   .repo-stats {

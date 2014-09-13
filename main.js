@@ -4,11 +4,41 @@ function renderTemplate(templateId, location, model) {
     var renderedTemplate = templateFunction(model);
     $(location).append(renderedTemplate);}
 
+function renderAllTemplates() {
+  makeHeader();
+  makeSidebar();
+  makeOrgs();
+  makeRepos('all');
 
+}
 
+function sortByDate(array){
+    array = array.sort(function(a, b) {
+      if ((a.sortByDate) > (b.sortByDate)) {
+        return -1;
+      }
+      if ((a.sortByDate) < (b.sortByDate)) {
+        return 1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+}
 
-$.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
-  var userData = {
+function makeHeader() {
+  $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
+    var userData = {
+      image: data.avatar_url,
+      username: data.login,
+    };
+    //render header template
+    renderTemplate('#templates-user-links', 'header .content', userData);
+  });
+}
+
+function makeSidebar() {
+  $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
+    var userData = {
       image: data.avatar_url,
       name: data.name,
       username: data.login,
@@ -16,33 +46,37 @@ $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
       email: data.email,
       joinedDate: moment(data.created_at).format("MMM D, YYYY"),
       followers: data.followers,
-      following: data.following};
-  renderTemplate('#templates-user-links', 'header .content', userData);
-  $.getJSON('https://api.github.com/users/NicerHugs/starred').done(function(starredData) {
-    userData.starred = starredData.length;
-    renderTemplate('#templates-sidebar', '.sidebar-top', userData);
-  });
-});
-
-//function renderRepos(sortBy){}
-
-
-$.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
-  var orgData = _.map(data, function(org) {
-    return {
-      orgAvatar: org.avatar_url,
-      orgName: org.login,
-      orgUrl: org.url
+      following: data.following,
     };
+    //render header template
+    renderTemplate('#templates-user-links', 'header .content', userData);
+    //add starred data to user data model
+    $.getJSON('https://api.github.com/users/NicerHugs/starred').done(function(starredData) {
+      userData.starred = starredData.length;
+      //render sidebar template
+      renderTemplate('#templates-sidebar', '.sidebar-top', userData);
+    });
   });
-  orgData.forEach(function(orgDatum){
-    renderTemplate('#templates-sidebar-orgs', '.org-imgs', orgDatum);
-  });
-});
+}
 
+function makeOrgs() {  //make orgs data model
+  $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
+    var orgData = _.map(data, function(org) {
+      return {
+        orgAvatar: org.avatar_url,
+        orgName: org.login,
+        orgUrl: org.url
+      };
+    });
+    orgData.forEach(function(orgDatum){
+      renderTemplate('#templates-sidebar-orgs', '.org-imgs', orgDatum);
+    });
+  });
+}
 
 function makeRepos(filterBy) {
 
+//make repos model
   $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
     var reposData = _.map(data, function(repo) {
       return {
@@ -54,34 +88,33 @@ function makeRepos(filterBy) {
         stargazers: repo.stargazers_count,
         repoLanguage: repo.language,
         private: repo.private,
-        description: repo.description
+        public: !repo.private,
+        description: repo.description,
+        fork: repo.fork,
+        source: !repo.fork,
+        mirror: repo.mirror_url,
+        all: true
       };
     });
-    _.defaults(reposData, {description: ""});
-    //SORT BY DATE
-    reposData = reposData.sort(function(a, b) {
-      if ((a.sortByDate) > (b.sortByDate)) {
-        return -1;
-      }
-      if ((a.sortByDate) < (b.sortByDate)) {
-        return 1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-    if (filterBy == "filter-private") {
-    //FILTER BY PRIVATE
-      reposData = reposData.filter(function(repoDatum){
-        return repoDatum.private === true;
-      });
-    }
-    reposData.forEach(function(repoDatum){
+    sortByDate(reposData);
+// filter data to show only that which is clicked on
+    var filteredReposData = reposData.filter(function(repoDatum){
+      return repoDatum[filterBy] === true;});
+    filteredReposData.forEach(function(repoDatum){
       renderTemplate('#templates-repos', '.repos', repoDatum);
     });
   });
 }
 
+  $('.filter li').on('click', function(){
+  var clickedID = $(this).attr('id');
+  var filterBy = clickedID.slice(7);
+  $('.repo').remove();
+  makeRepos(filterBy);
+});
 
+
+//click action to make clicked elements active
 function makeActive(element) {
   $(element).on('click', function(){
     $(element).removeClass("active");
@@ -92,21 +125,4 @@ function makeActive(element) {
 makeActive('.filter li');
 makeActive('.tabs span');
 
-$('.filter li').on('click', function() {
-  var id = $(this).attr('id');
-  $('.repo').remove();
-  makeRepos(id);
-});
-
-
-//$('#filter-private').on('click', function(){
-//  $('.repo').remove();
-//  makeRepos("filter-private");
-//});
-//
-//$('#filter-all').on('click', function(){
-//  $('.repo').remove();
-//  makeRepos();
-//});
-
-makeRepos();
+renderAllTemplates();
