@@ -79,19 +79,33 @@
         </div>
 
         <div class="contributions-tab active">
-          <div class="popular-repos header-box">
+          <div class="popular-repos-div header-box">
             <h3>Popular repositories</h3>
+            <ul class="popular-repos">
             <script type="text/template" id="popular-repos">
-              <div>
-                <a href="<%= repoUrl %>">
-                  <h4 class="octicon octicon-repo"><%= repoName %></h4>
-                  <span><%= description %></span>
+                <li>
+                  <a href="<%= repoUrl %>">
+                    <h4 class="octicon octicon-repo"><%= repoName %></h4>
+                    <span><%= description %></span>
+                    <span class="octicon octicon-star"><%= stargazers %></span>
                 </a>
-              </div>
+                </li>
             </script>
+            </ul>
           </div>
           <div class="repos-contributed header-box">
-            <h3>Repositories contributed to</h3>
+            <h3>Popular repositories</h3>
+            <ul class="repos-contributed">
+            <script type="text/template" id="repos-contributed">
+                <li>
+                  <a href="<%= repoUrl %>">
+                    <h4 class="octicon octicon-repo"><%= repoName %></h4>
+                    <span><%= description %></span>
+                    <span class="octicon octicon-star"></span>
+                </a>
+                </li>
+            </script>
+            </ul>
           </div>
           <div class="contributions header-box">
             <h3>Contributions</h3>

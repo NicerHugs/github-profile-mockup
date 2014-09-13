@@ -392,39 +392,47 @@ section {
     font-size: 14px;
     margin: 0;
     padding: 10px; }
-  .header-box div {
-    border-bottom: 1px solid #e5e5e5;
-    position: relative; }
-    .header-box div:last-of-type {
+  .header-box li {
+    border-bottom: 1px solid #e5e5e5; }
+    .header-box li:last-of-type {
       border-bottom: 0; }
 
-.popular-repos {
+.popular-repos-div {
   float: left;
   width: 355px; }
-  .popular-repos div {
+  .popular-repos-div ul {
+    list-style-type: none;
+    width: 100%; }
+  .popular-repos-div li {
     height: 50px;
-    vertical-align: middle; }
-  .popular-repos a:hover {
-    text-decoration: none; }
-  .popular-repos h4 {
+    padding: 0;
+    position: relative; }
+  .popular-repos-div a {
+    display: inline-block;
+    height: 50px;
+    width: 100%; }
+    .popular-repos-div a:hover {
+      text-decoration: none; }
+      .popular-repos-div a:hover h4 {
+        text-decoration: underline; }
+  .popular-repos-div h4 {
     font-size: 14px;
     font-weight: bold;
     margin: 0;
-    padding: 0 10px 15px;
-    vertical-align: bottom;
-    width: 100%; }
-    .popular-repos h4:hover {
-      text-decoration: underline; }
-    .popular-repos h4::before {
+    vertical-align: bottom; }
+    .popular-repos-div h4::before {
       color: #666;
       font-size: 16px;
       font-weight: 500;
       margin-right: 5px; }
-  .popular-repos span {
+  .popular-repos-div span {
     color: #666;
     display: block;
-    font-size: 12px;
-    margin: -10px 30px 10px; }
+    font-size: 12px; }
+    .popular-repos-div span.octicon {
+      position: absolute;
+      right: 15px;
+      top: 19px; }
 
 .repos-contributed {
   width: 355px;
