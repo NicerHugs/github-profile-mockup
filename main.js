@@ -12,12 +12,14 @@ function renderAllTemplates() {
 
 }
 
-function sortByDate(array){
+
+//to use the sortByItem function each object in the array must contain a property called sort by that has a number value.
+function sortByItem(array){
     array = array.sort(function(a, b) {
-      if ((a.sortByDate) > (b.sortByDate)) {
+      if ((a.sortBy) > (b.sortBy)) {
         return -1;
       }
-      if ((a.sortByDate) < (b.sortByDate)) {
+      if ((a.sortBy) < (b.sortBy)) {
         return 1;
       }
       // a must be equal to b
@@ -82,7 +84,7 @@ function makeReposTab(filterBy) {
       return {
         repoUrl: repo.html_url,
         repoName: repo.name,
-        sortByDate: Date.parse(repo.updated_at),
+        sortBy: Date.parse(repo.updated_at),
         lastUpdated: moment(repo.updated_at).fromNow(),
         forks: repo.forks_count,
         stargazers: repo.stargazers_count,
@@ -96,7 +98,7 @@ function makeReposTab(filterBy) {
         all: true
       };
     });
-    sortByDate(reposData);
+    sortByItem(reposData);
 // filter data to show only that which is clicked on
     var filteredReposData = reposData.filter(function(repoDatum){
       return repoDatum[filterBy] === true;});
@@ -105,6 +107,27 @@ function makeReposTab(filterBy) {
     });
   });
 }
+
+function makeContributionsTab() {
+  $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
+    var contributionsData = _.map(data, function(repo) {
+      return {
+        repoUrl: repo.html_url,
+        repoName: repo.name,
+        sortBy: repo.stargazers_count,
+        stargazers: repo.stargazers_count,
+        description: repo.description
+      };
+    });
+    sortByItem(contributionsData);
+    contributionsData = contributionsData.slice(0,5);
+    contributionsData.forEach(function(contrDatum){
+      renderTemplate('#popular-repos', '.popular-repos', contrDatum);
+    });
+  });
+}
+
+makeContributionsTab();
 
   $('.filter li').on('click', function(){
   var clickedID = $(this).attr('id');
