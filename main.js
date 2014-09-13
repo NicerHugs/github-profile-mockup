@@ -8,7 +8,7 @@ function renderAllTemplates() {
   makeHeader();
   makeSidebar();
   makeOrgs();
-  makeRepos('all');
+  makeReposTab('all');
 
 }
 
@@ -74,7 +74,7 @@ function makeOrgs() {  //make orgs data model
   });
 }
 
-function makeRepos(filterBy) {
+function makeReposTab(filterBy) {
 
 //make repos model
   $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
@@ -110,24 +110,23 @@ function makeRepos(filterBy) {
   var clickedID = $(this).attr('id');
   var filterBy = clickedID.slice(7);
   $('.repo').remove();
-  makeRepos(filterBy);
+  makeReposTab(filterBy);
 });
 
-
 //click action to make clicked elements active
-function makeActive(element) {
+function makeActiveMultiItem(element) {
   $(element).on('click', function(){
     $(element).removeClass("active");
     $(this).addClass("active");
   });
 }
 
-makeActive('.filter li');
-makeActive('.tabs span');
+makeActiveMultiItem('.filter li');
+makeActiveMultiItem('.tabs span');
 
-function makeActiveTab(tabID, tabClass){
-  $(tabClass).siblings().removeClass('active');
-  $(tabClass).addClass('active');
+function makeActiveUniqueItem(className){
+  $(className).siblings().removeClass('active');
+  $(className).addClass('active');
 }
 
 function displaySelectedTab(){
@@ -137,21 +136,11 @@ function displaySelectedTab(){
     var tabArray = tabString.split(" ");
     var tabID = "#" + tabArray.join("-") + "-tab";
     var tabClass = "." + tabArray.join("-") + "-tab";
-    console.log(tabID);
-    console.log(tabClass);
-    $(tabID).on('click', function(){
-      $(tabClass).siblings().removeClass('active');
-      $(tabClass).addClass('active');
-    });
+    $(tabID).on('click', makeActiveUniqueItem(tabClass));
   });
 }
 
-displaySelectedTab();
-
-// $('#contributions-tab').on('click', function(){
-//   $('.contributions-tab').siblings().removeClass('active');
-//   $('.contributions-tab').addClass('active');
-// });
-
 
 renderAllTemplates();
+
+displaySelectedTab();
