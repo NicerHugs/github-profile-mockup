@@ -52,7 +52,7 @@
               <div><span class="octicon octicon-clock"></span><span> Joined on <%= joinedDate %></span ></div>
             </div>
           <div class="follower-info">
-            <div><a href="#"><span><%= followers %></span> Follower </a></div>
+            <div><a href="https://github.com/NicerHugs/followers"><span><%= followers %></span> Follower </a></div>
             <div><a href="#"><span><%= starred %></span> Starred </a></div>
             <div><a href="#"><span><%= following %></span> Following </a></div>
           </div>
@@ -94,21 +94,37 @@
             </ul>
           </div>
           <div class="repos-contributed header-box">
-            <h3>Popular repositories</h3>
+            <h3>Repositories contributed to</h3>
             <ul class="repos-contributed">
             <script type="text/template" id="repos-contributed">
                 <li>
                   <a href="<%= repoUrl %>">
-                    <h4 class="octicon octicon-repo"><%= repoName %></h4>
+                    <span class="octicon octicon-repo"></span>
+                    <h4><%= repoName %></h4>
                     <span><%= description %></span>
-                    <span class="octicon octicon-star"></span>
+                    <span class="octicon octicon-star"><%= stargazers %></span>
                 </a>
                 </li>
             </script>
-            </ul>
           </div>
           <div class="contributions header-box">
             <h3>Contributions</h3>
+            <div class="pretty-graph">Pretty graph</div>
+            <div class="one-third">
+              <span class="title">Year of Contributions</span>
+              <span class="value">a value</span>
+              <span class="dates">dates</span>
+            </div>
+            <div class="one-third">
+              <span class="title">Longest streak</span>
+              <span class="value">a value</span>
+              <span class="dates">dates</span>
+            </div>
+            <div class="one-third">
+              <span class="title">Current streak</span>
+              <span class="value">a value</span>
+              <span class="dates">dates</span>
+            </div>
           </div>
           <div class="contribution-activity">
             <h3>Contributions Activity</h3>

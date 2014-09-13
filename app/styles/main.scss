@@ -602,6 +602,7 @@ section {
   a {
     display: inline-block;
     height: 50px;
+    padding: 6px 15px;
     width: 100%;
 
     &:hover {
@@ -647,6 +648,41 @@ section {
 
 .contributions {
   width: 100%;
+  overflow: auto;
+
+  .pretty-graph {
+    height: 155px;
+    border-bottom: solid 1px $border-color;
+  }
+
+  .one-third {
+    border-right: solid 1px $border-color;
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    width: 240px;
+
+    &:last-of-type {
+      border: 0;
+    }
+
+    .title {
+      color: $primary-color;
+      display: block;
+      font-size: 12px;
+    }
+
+    .value {
+      color: $strong-color;
+      font-size: 28px;
+    }
+
+    .dates {
+      color: $medium-color;
+      display: block;
+      font-size: 12px;
+    }
+  }
 }
 
 

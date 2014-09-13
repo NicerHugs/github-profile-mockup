@@ -410,6 +410,7 @@ section {
   .popular-repos-div a {
     display: inline-block;
     height: 50px;
+    padding: 6px 15px;
     width: 100%; }
     .popular-repos-div a:hover {
       text-decoration: none; }
@@ -439,7 +440,30 @@ section {
   margin-left: 20px; }
 
 .contributions {
-  width: 100%; }
+  width: 100%;
+  overflow: auto; }
+  .contributions .pretty-graph {
+    height: 155px;
+    border-bottom: solid 1px #e5e5e5; }
+  .contributions .one-third {
+    border-right: solid 1px #e5e5e5;
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    width: 240px; }
+    .contributions .one-third:last-of-type {
+      border: 0; }
+    .contributions .one-third .title {
+      color: #666;
+      display: block;
+      font-size: 12px; }
+    .contributions .one-third .value {
+      color: #333;
+      font-size: 28px; }
+    .contributions .one-third .dates {
+      color: #999;
+      display: block;
+      font-size: 12px; }
 
 footer {
   color: #999;
