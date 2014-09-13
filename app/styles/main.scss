@@ -69,6 +69,72 @@ body {
   }
 }
 
+[hover-bubble-below] {
+  overflow: visible;
+  position: relative;
+
+  &:hover::before {
+    content: '';
+    border-style: solid;
+    border-width: 0 5px 4px;
+    border-color: transparent transparent $strong-color;
+    height: 0;
+    position: absolute;
+    top: 20px;
+    width: 0;
+  }
+
+  &:hover::after {
+    content: attr(hover-bubble-below);
+    background: $strong-color;
+    z-index: 1000;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0 5px;
+    position: absolute;
+    left: -30px;
+    top: 24px;
+    white-space: nowrap;
+  }
+}
+
+[hover-bubble-above] {
+  overflow: visible;
+  position: relative;
+
+  &:hover::before {
+    content: '';
+    border-style: solid;
+    border-width: 5px 4px 0 5px;
+    border-color: $strong-color transparent transparent transparent;
+    height: 0;
+    position: absolute;
+    left: 18px;
+    top: -4px;
+    width: 0;
+  }
+
+  &:hover::after {
+    content: attr(hover-bubble-above);
+    background: $strong-color;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    position: absolute;
+    top: -34px;
+    left: -50px;
+    white-space: nowrap;
+  }
+}
+
+
+
 
 
 // ===========HEADER============
@@ -80,6 +146,10 @@ header {
   height: 49px;
   margin-bottom: 1px solid;
   padding: 10px 0;
+
+  .content {
+    overflow: visible;
+  }
 
   .octicon-mark-github {
     font-size: 28px;
@@ -133,6 +203,7 @@ header {
   }
 
   .user-links {
+    overflow: visible;
     position: absolute;
     right: 4px;
 

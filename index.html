@@ -25,11 +25,11 @@
       <script type="text/template" id="templates-user-links">
         <ul class ="user-links">
           <li class="profile"><a href="https://gist.github.com"><img src="<%= image %>"/> <%= username %> </a></li>
-          <li class="create-new"><a href="https://github.com/<%= username %>?tab=repositories#">
-            <span class="octicon octicon-plus"> <span class="octicon octicon-triangle-down"></span></span></a></li>
-          <li class="notifications" ><a href="https://github.com/notifications"><span class="octicon octicon-inbox"></span></a></li>
-          <li class="settings"><a href="https://github.com/settings/profile"><span class="octicon octicon-gear"></span></a></li>
-          <li class="signout"><a href="https://github.com/notifications"><span class="octicon octicon-sign-out"></span></a></li>
+          <li class="create-new"><a href="https://github.com/<%= username %>?tab=repositories#"  hover-bubble-below="Create new..." >
+            <span class="octicon octicon-plus"> </span><span class="octicon octicon-triangle-down"></span></a></li>
+          <li class="notifications" ><a href="https://github.com/notifications" hover-bubble-below="Notifications"><span class="octicon octicon-inbox"></span></a></li>
+          <li class="settings"><a href="https://github.com/settings/profile" hover-bubble-below="Settings"><span class="octicon octicon-gear"></span></a></li>
+          <li class="signout"><a href="https://github.com/notifications" hover-bubble-below="Signout"><span class="octicon octicon-sign-out"></span></a></li>
          </ul>
       </script>
     </div>
@@ -62,7 +62,7 @@
           <h4>Organizations</h4>
           <div class="org-imgs">
             <script type="text/template" id="templates-sidebar-orgs">
-              <a href="<%= orgUrl %>"><img src="<%= orgAvatar %>"/></a>
+              <a href="<%= orgUrl %>" hover-bubble-above="<%= orgName %>"><img src="<%= orgAvatar %>"  /></a>
             </script>
           </div>
         </div>
