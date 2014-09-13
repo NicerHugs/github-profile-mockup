@@ -30,6 +30,28 @@ $content-width: 1000px;
   }
 }
 
+@mixin hover-arrow {
+  border-style: solid;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+@mixin hover-bubble {
+  background: rgba(0, 0, 0, .8);
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
 $main-font: Helvetica, arial, freesans, clean, sans-serif;
 
 body {
@@ -63,7 +85,7 @@ body {
 
   .content {
     margin: 0 auto;
-    overflow: auto;
+    overflow: visible;
     position: relative;
     width: $content-width;
   }
@@ -74,29 +96,16 @@ body {
   position: relative;
 
   &:hover::before {
-    content: '';
-    border-style: solid;
-    border-width: 0 5px 4px;
+    @include hover-arrow;
     border-color: transparent transparent $strong-color;
-    height: 0;
-    position: absolute;
+    border-width: 0 5px 4px;
     top: 20px;
-    width: 0;
   }
 
   &:hover::after {
+    @include hover-bubble;
     content: attr(hover-bubble-below);
-    background: $strong-color;
-    z-index: 1000;
-    color: #fff;
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 0 5px;
-    position: absolute;
-    left: -30px;
     top: 24px;
-    white-space: nowrap;
   }
 }
 
@@ -105,31 +114,19 @@ body {
   position: relative;
 
   &:hover::before {
-    content: '';
-    border-style: solid;
+    @include hover-arrow;
+    border-color: $strong-color transparent transparent;
     border-width: 5px 4px 0 5px;
-    border-color: $strong-color transparent transparent transparent;
-    height: 0;
-    position: absolute;
-    left: 18px;
+    left: 50%;
     top: -4px;
-    width: 0;
   }
 
   &:hover::after {
+    @include hover-bubble;
     content: attr(hover-bubble-above);
-    background: $strong-color;
-    color: #fff;
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
     height: 30px;
     line-height: 30px;
-    padding: 0 5px;
-    position: absolute;
     top: -34px;
-    left: -50px;
-    white-space: nowrap;
   }
 }
 
