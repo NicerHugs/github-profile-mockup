@@ -392,10 +392,39 @@ section {
     font-size: 14px;
     margin: 0;
     padding: 10px; }
+  .header-box div {
+    border-bottom: 1px solid #e5e5e5;
+    position: relative; }
+    .header-box div:last-of-type {
+      border-bottom: 0; }
 
 .popular-repos {
   float: left;
   width: 355px; }
+  .popular-repos div {
+    height: 50px;
+    vertical-align: middle; }
+  .popular-repos a:hover {
+    text-decoration: none; }
+  .popular-repos h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 10px 15px;
+    vertical-align: bottom;
+    width: 100%; }
+    .popular-repos h4:hover {
+      text-decoration: underline; }
+    .popular-repos h4::before {
+      color: #666;
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 5px; }
+  .popular-repos span {
+    color: #666;
+    display: block;
+    font-size: 12px;
+    margin: -10px 30px 10px; }
 
 .repos-contributed {
   width: 355px;

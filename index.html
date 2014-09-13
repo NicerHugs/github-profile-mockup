@@ -62,7 +62,7 @@
           <h4>Organizations</h4>
           <div class="org-imgs">
             <script type="text/template" id="templates-sidebar-orgs">
-              <a href="<%= orgUrl %>" hover-bubble-above="<%= orgName %>"><img src="<%= orgAvatar %>"  /></a>
+              <a href="https://github.com/<%= orgName %>" hover-bubble-above="<%= orgName %>"><img src="<%= orgAvatar %>"  /></a>
             </script>
           </div>
         </div>
@@ -83,7 +83,10 @@
             <h3>Popular repositories</h3>
             <script type="text/template" id="popular-repos">
               <div>
-                <h4><a href="<%= repoUrl %>"><%= repoName %></a></h4>
+                <a href="<%= repoUrl %>">
+                  <h4 class="octicon octicon-repo"><%= repoName %></h4>
+                  <span><%= description %></span>
+                </a>
               </div>
             </script>
           </div>

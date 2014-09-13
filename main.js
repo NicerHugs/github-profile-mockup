@@ -66,8 +66,7 @@ function makeOrgs() {  //make orgs data model
     var orgData = _.map(data, function(org) {
       return {
         orgAvatar: org.avatar_url,
-        orgName: org.login,
-        orgUrl: org.url
+        orgName: org.login
       };
     });
     orgData.forEach(function(orgDatum){
