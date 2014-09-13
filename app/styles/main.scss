@@ -469,8 +469,8 @@ section {
   li {
     display: inline-block;
     line-height: 35px;
-    vertical-align: middle;
     margin: 0 3px;
+    vertical-align: middle;
   }
 
   .active {
@@ -557,6 +557,37 @@ section {
   &.active {
     display: block;
   }
+}
+
+// ==Conributions content area==
+
+.header-box {
+  border: solid 1px $border-color;
+  border-radius: 4px;
+  margin-top: 20px;
+  display: inline-block;
+
+  h3 {
+    background: $background-color;
+    border-bottom: solid 1px $border-color;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+.popular-repos {
+  float: left;
+  width: 355px;
+}
+
+.repos-contributed {
+  width: 355px;
+  margin-left: 20px;
+}
+
+.contributions {
+  width: 100%;
 }
 
 // ===========FOOTER============
