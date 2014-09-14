@@ -11,7 +11,6 @@ function renderAllTemplates() {
   makeSidebar();
   makeOrgs();
   makeReposTab('all');
-
 }
 
 
@@ -140,7 +139,7 @@ $('.filter li').on('click', function(){
 //click action to make clicked elements active
 function makeActiveMultiItem(element) {
   $(element).on('click', function(){
-    $(element).removeClass("active");
+    $(element).siblings().removeClass("active");
     $(this).addClass("active");
   });
 }
@@ -183,7 +182,7 @@ $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(r
   functionHolder(reposData, commitsArray, i);
 });
 
-
+//function calls recursively until all objects have been inspected, then functions are performed on data in the else call so as to not close the .done statement
 function functionHolder(arrayOfGits, arrayOfCommits, counter){
   $.getJSON(arrayOfGits[counter].commitsURL).done(function(commits){
     arrayOfCommits.push({
@@ -212,11 +211,15 @@ function functionHolder(arrayOfGits, arrayOfCommits, counter){
       });
       commitFrequency = itemFreq(commitDatesStrings);
       console.log(commitFrequency);
+      var commitsModel = {
+        totalCommits: commitDates.length
+      };
+      renderTemplate('#templates-contributions-commits', '.contributions-commits', commitsModel);
     }
   });
 }
 
-
+//returns an object with each item and it's frequency as a key:value pair
 function itemFreq(arrayOfItems) {
   var frequency = {};
   _.each(arrayOfItems, function(item){
@@ -229,14 +232,3 @@ function itemFreq(arrayOfItems) {
   });
   return frequency;
 }
-// function charFreq(string) {
-//   var frequency = {};
-//   for (var i = string.length-1; i >= 0 ; i--) {
-//     var currLetter = string.slice(i, i + 1);
-//     if (frequency[currLetter] === undefined) {
-//       Object.defineProperty(frequency, currLetter, {value: 1, configurable: true});
-//     }
-//     else {
-//       Object.defineProperty(frequency, currLetter, {value: frequency[currLetter] + 1});}}
-//     return frequency;
-// }
