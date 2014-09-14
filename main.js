@@ -170,17 +170,58 @@ renderAllTemplates();
 displaySelectedTab();
 
 
-// 
-//
-// $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(repos){
-//   var repoURLs = _.map(repos, function(repo){
-//     return 'https://api.github.com/repos/' + repo.full_name + '/commits';
-//   });
-//   var commitsArray = [];
-//   $.getJSON(repoURLs[0]).done(function(commits){
-//     commitsArray.push(commits.length);
-//     $.getJSON(repoURLs[1]).done(function(commits){
-//       commitsArray.push(commits.length);
-//     });
-//   });
-// });
+
+
+$.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(repos){
+  var counter = repos.length-1;
+  var reposData= _.map(repos, function(repoDatum){
+    return {
+      commitsURL: 'https://api.github.com/repos/' + repoDatum.full_name + '/commits',
+      name: repoDatum.name};
+  });
+  var commitsArray = [];
+  console.log(reposData);
+  console.log (counter);
+  console.log(reposData[counter]);
+  functionHolder(reposData, commitsArray, counter);
+
+  // $.getJSON(reposData[0].commitsURL).done(function(commits){
+  //   commitsArray.push({
+  //     name: reposData[0].name,
+  //     totalCommits: commits.length,
+  //     commits: _.map(commits, function(commit){
+  //       return commit.commit.author.date;
+  //     })
+  //   });
+  //   console.log(commitsArray);
+  //   $.getJSON(reposData[1].commitsURL).done(function(commits){
+  //     commitsArray.push({
+  //       name: reposData[1].name,
+  //       totalCommits: commits.length,
+  //       commits: _.map(commits, function(commit){
+  //         return commit.commit.author.date;
+  //       })
+  //     });
+  //     console.log(commitsArray);
+  //
+  //   });
+  // });
+});
+
+
+function functionHolder(arrayOfGits, arrayOfCommits, counter){
+  $.getJSON(arrayOfGits[counter].commitsURL).done(function(commits){
+    arrayOfCommits.push({
+      name: arrayOfGits[counter].name,
+      totalCommits: commits.length,
+      commits: _.map(commits, function(commit){
+        return commit.commit.author.date;
+      })
+    });
+    console.log(arrayOfCommits);
+    if (counter > 0) {
+      counter--;
+      functionHolder(arrayOfGits, arrayOfCommits, counter);
+    }
+  });
+}
