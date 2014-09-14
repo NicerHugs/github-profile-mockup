@@ -139,7 +139,7 @@ $('.filter li').on('click', function(){
 //click action to make clicked elements active
 function makeActiveMultiItem(element) {
   $(element).on('click', function(){
-    $(element).siblings().removeClass("active");
+    $(element).removeClass("active");
     $(this).addClass("active");
   });
 }
