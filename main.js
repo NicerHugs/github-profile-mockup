@@ -1,3 +1,5 @@
+var userName = "NicerHugs";
+
 function renderTemplate(templateId, location, model) {
     var templateString = $(templateId).text();
     var templateFunction = _.template(templateString);
@@ -28,7 +30,7 @@ function sortByItem(array){
 }
 
 function makeHeader() {
-  $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
+  $.getJSON('https://api.github.com/users/' + userName).done(function(data) {
     var userData = {
       image: data.avatar_url,
       username: data.login,
@@ -39,7 +41,7 @@ function makeHeader() {
 }
 
 function makeSidebar() {
-  $.getJSON('https://api.github.com/users/NicerHugs').done(function(data) {
+  $.getJSON('https://api.github.com/users/' + userName).done(function(data) {
     var userData = {
       image: data.avatar_url,
       name: data.name,
@@ -53,7 +55,7 @@ function makeSidebar() {
     //render header template
     renderTemplate('#templates-user-links', 'header .content', userData);
     //add starred data to user data model
-    $.getJSON('https://api.github.com/users/NicerHugs/starred').done(function(starredData) {
+    $.getJSON('https://api.github.com/users/' + userName + '/starred').done(function(starredData) {
       userData.starred = starredData.length;
       //render sidebar template
       renderTemplate('#templates-sidebar', '.sidebar-top', userData);
@@ -62,7 +64,7 @@ function makeSidebar() {
 }
 
 function makeOrgs() {  //make orgs data model
-  $.getJSON('https://api.github.com/users/NicerHugs/orgs').done(function(data){
+  $.getJSON('https://api.github.com/users/' + userName + '/orgs').done(function(data){
     var orgData = _.map(data, function(org) {
       return {
         orgAvatar: org.avatar_url,
@@ -78,7 +80,7 @@ function makeOrgs() {  //make orgs data model
 function makeReposTab(filterBy) {
 
 //make repos model
-  $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
+  $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(data){
     var reposData = _.map(data, function(repo) {
       return {
         repoUrl: repo.html_url,
@@ -108,7 +110,7 @@ function makeReposTab(filterBy) {
 }
 
 function makeContributionsTab() {
-  $.getJSON('https://api.github.com/users/NicerHugs/repos').done(function(data){
+  $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(data){
     var contributionsData = _.map(data, function(repo) {
       return {
         repoUrl: repo.html_url,
@@ -128,7 +130,7 @@ function makeContributionsTab() {
 
 makeContributionsTab();
 
-  $('.filter li').on('click', function(){
+$('.filter li').on('click', function(){
   var clickedID = $(this).attr('id');
   var filterBy = clickedID.slice(7);
   $('.repo').remove();
@@ -166,3 +168,19 @@ function displaySelectedTab(){
 renderAllTemplates();
 
 displaySelectedTab();
+
+
+// 
+//
+// $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(repos){
+//   var repoURLs = _.map(repos, function(repo){
+//     return 'https://api.github.com/repos/' + repo.full_name + '/commits';
+//   });
+//   var commitsArray = [];
+//   $.getJSON(repoURLs[0]).done(function(commits){
+//     commitsArray.push(commits.length);
+//     $.getJSON(repoURLs[1]).done(function(commits){
+//       commitsArray.push(commits.length);
+//     });
+//   });
+// });
