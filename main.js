@@ -173,39 +173,14 @@ displaySelectedTab();
 
 
 $.getJSON('https://api.github.com/users/' + userName + '/repos').done(function(repos){
-  var counter = repos.length-1;
+  var i = repos.length-1;
   var reposData= _.map(repos, function(repoDatum){
     return {
       commitsURL: 'https://api.github.com/repos/' + repoDatum.full_name + '/commits',
       name: repoDatum.name};
   });
   var commitsArray = [];
-  console.log(reposData);
-  console.log (counter);
-  console.log(reposData[counter]);
-  functionHolder(reposData, commitsArray, counter);
-
-  // $.getJSON(reposData[0].commitsURL).done(function(commits){
-  //   commitsArray.push({
-  //     name: reposData[0].name,
-  //     totalCommits: commits.length,
-  //     commits: _.map(commits, function(commit){
-  //       return commit.commit.author.date;
-  //     })
-  //   });
-  //   console.log(commitsArray);
-  //   $.getJSON(reposData[1].commitsURL).done(function(commits){
-  //     commitsArray.push({
-  //       name: reposData[1].name,
-  //       totalCommits: commits.length,
-  //       commits: _.map(commits, function(commit){
-  //         return commit.commit.author.date;
-  //       })
-  //     });
-  //     console.log(commitsArray);
-  //
-  //   });
-  // });
+  functionHolder(reposData, commitsArray, i);
 });
 
 
@@ -215,13 +190,53 @@ function functionHolder(arrayOfGits, arrayOfCommits, counter){
       name: arrayOfGits[counter].name,
       totalCommits: commits.length,
       commits: _.map(commits, function(commit){
-        return commit.commit.author.date;
+        return Date.parse(commit.commit.author.date);
       })
     });
-    console.log(arrayOfCommits);
     if (counter > 0) {
       counter--;
       functionHolder(arrayOfGits, arrayOfCommits, counter);
     }
+    else {
+//any data manipulation to do with commit data goes here
+      console.log(arrayOfCommits);
+      var commitDates = [];
+      _.each(arrayOfCommits, function(repo){
+        _.each(repo.commits, function(commitDate){
+          commitDates.push(commitDate);
+        });
+      });
+      console.log(commitDates);
+      var commitDatesStrings = _.map(commitDates, function(commitDate){
+        return moment(commitDate).format("MMM D, YYYY");
+      });
+      commitFrequency = itemFreq(commitDatesStrings);
+      console.log(commitFrequency);
+    }
   });
 }
+
+
+function itemFreq(arrayOfItems) {
+  var frequency = {};
+  _.each(arrayOfItems, function(item){
+    if (!frequency[item]) {
+      Object.defineProperty(frequency, item, {value: 1, configurable: true});
+    }
+    else {
+      Object.defineProperty(frequency, item, {value: frequency[item] + 1});
+    }
+  });
+  return frequency;
+}
+// function charFreq(string) {
+//   var frequency = {};
+//   for (var i = string.length-1; i >= 0 ; i--) {
+//     var currLetter = string.slice(i, i + 1);
+//     if (frequency[currLetter] === undefined) {
+//       Object.defineProperty(frequency, currLetter, {value: 1, configurable: true});
+//     }
+//     else {
+//       Object.defineProperty(frequency, currLetter, {value: frequency[currLetter] + 1});}}
+//     return frequency;
+// }
