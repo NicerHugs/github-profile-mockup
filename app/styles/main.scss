@@ -85,7 +85,6 @@ body {
 
   .content {
     margin: 0 auto;
-    // overflow: auto;
     position: relative;
     width: $content-width;
   }
@@ -682,6 +681,41 @@ section {
       display: block;
       font-size: 12px;
     }
+  }
+}
+
+.contribution-activity {
+
+  h3 {
+    color: $strong-color;
+    font-weight: 400;
+
+  }
+}
+
+.contributions-commits {
+
+  h4 {
+    border-bottom: solid 1px $border-color;
+    color: $medium-color;
+    height: 12px;
+    text-align: center;
+
+    div {
+      background: #fff;
+      display: inline-block;
+      padding: 0 5px;
+      }
+    }
+
+  span {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .strong {
+    color: $strong-color;
+    font-weight: 600;
   }
 }
 

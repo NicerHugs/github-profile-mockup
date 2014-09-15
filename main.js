@@ -209,8 +209,8 @@ function functionHolder(arrayOfGits, arrayOfCommits, counter){
       var commitDatesStrings = _.map(commitDates, function(commitDate){
         return moment(commitDate).format("MMM D, YYYY");
       });
-      commitFrequency = itemFreq(commitDatesStrings);
-      console.log(commitFrequency);
+      console.log(commitDatesStrings);
+      commitFrequency = dateFreq(commitDates);
       var commitsModel = {
         totalCommits: commitDates.length
       };
@@ -219,16 +219,35 @@ function functionHolder(arrayOfGits, arrayOfCommits, counter){
   });
 }
 
-//returns an object with each item and it's frequency as a key:value pair
-function itemFreq(arrayOfItems) {
-  var frequency = {};
-  _.each(arrayOfItems, function(item){
-    if (!frequency[item]) {
-      Object.defineProperty(frequency, item, {value: 1, configurable: true});
-    }
-    else {
-      Object.defineProperty(frequency, item, {value: frequency[item] + 1});
-    }
+function dateFreq(arrayOfDates) {
+  var frequency = [];
+  _.each(arrayOfDates, function(date){
+      frequency.push({"Date": date, "Frequency": 1})  ;
+//     _.each(frequency, function(frequencyObject){
+//       if(frequencyObject[itemName] === item){
+//         frequencyObject[itemFrequency]++;
+//       }
+//       else {
+//         frequency.push({itemName: item, itemFrequency: 1});
+//       }
+//     });
   });
+  console.log(frequency);
   return frequency;
 }
+
+//==> [{itemName: item, itemFrequency: #ofiteminarrayOfItems}, {itemName: item, itemFrequency: #ofItemInarrayOfItems} etc]
+
+//returns an object with each item and its frequency as a key:value pair
+// function itemFreq(arrayOfItems) {
+//   var frequency = {};
+//   _.each(arrayOfItems, function(item){
+//     if (!frequency[item]) {
+//       Object.defineProperty(frequency, item, {value: 1, configurable: true});
+//     }
+//     else {
+//       Object.defineProperty(frequency, item, {value: frequency[item] + 1});
+//     }
+//   });
+//   return frequency;
+// }
