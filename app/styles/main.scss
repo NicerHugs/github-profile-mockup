@@ -103,7 +103,7 @@ body {
 
   &:hover::after {
     @include hover-bubble;
-    content: attr(hover-bubble-below);
+    content: attr(hover-bubble-below)px;
     top: 24px;
   }
 }
